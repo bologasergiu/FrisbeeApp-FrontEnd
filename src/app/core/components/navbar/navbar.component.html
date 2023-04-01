@@ -1,0 +1,17 @@
+<mat-toolbar color="accent">
+  <span style="color:black" >FrisbeeApp</span>
+  <div class="buttons" style="display: flex;">
+    <div *ngIf="!isLoggedIn()">
+      <div *ngIf="isOnLoginPage">
+        <button mat-raised-button (click)="goToRegister()">Register</button>
+      </div>
+      <div *ngIf="!isOnLoginPage">
+        <button mat-raised-button (click)="goToLogin()">Login</button>
+      </div>
+    </div>
+    <div *ngIf="isLoggedIn()">
+      <button mat-raised-button (click)="goToLogout()">Logout</button>
+    </div>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

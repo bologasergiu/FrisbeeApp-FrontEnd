@@ -1,0 +1,101 @@
+.container {
+  margin-top: 5%;
+  left: 45%;
+  position: fixed;
+  z-index: 2;
+  width: 570px !important;
+}
+
+mat-card {
+  width: 320px;
+  top: 50px;
+  right:50px;
+  position: relative;
+}
+
+mat-form-field{
+  margin:14px;
+}
+
+mat-card-title {
+  margin-top: 10px;
+  margin-left: 15%;
+  margin-bottom:30px;
+
+}
+
+.register-button{
+  margin-left: 2.8%;
+  height: 50px;
+  width: 150px;
+  margin-bottom: 0.2%;
+}
+
+img {
+  display: block;
+  margin-left: 20%;
+  margin-right: auto;
+  margin-top: 40%;
+}
+
+.column {
+  width: 1000%;
+  padding: 10px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.mat-card-content{
+  margin-left:25%;
+}
+
+@media screen and (max-width: 450px) {
+  .column {
+    width: 70%;
+    display: block;
+    margin-bottom: 20px;
+    margin-left:-10%;
+  }
+
+  .mat-card {
+    width: 100px;
+    top: 50px;
+    position: relative;
+    display: flex;
+  }
+  .mat-card-title{
+    font-size: 20px;
+    text-align:center;
+    margin-left:0%;
+    width:300px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .mat-card {
+    box-shadow: none;
+  }
+}
+
+.fa-user-plus {
+  color: black;
+}
+
+mat-card-title{
+  margin-left: 3.5%;
+}
+
+
+form{
+  margin-left: 0.4%;
+}
+.login-button{
+  margin-left: 1.4%;
+  height: 50px;
+  width: 150px;
+  margin-bottom: 0.2%;
+}
