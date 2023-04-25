@@ -1,0 +1,14 @@
+<mat-card class="mat-card">
+  <mat-card-header>
+    <mat-card-title class="title">Teams List</mat-card-title>
+  </mat-card-header>
+  <div>
+    <mat-card-content *ngFor="let team of teams" class="team-name">
+      <mat-divider></mat-divider>
+      <div class="team-info">
+        <h2>{{team.teamName}}</h2>
+        <button mat-raised-button color="primary" class="btn" (click)="deleteTeam(team.teamName)">Delete</button>
+      </div>
+    </mat-card-content>
+  </div>
+</mat-card>

@@ -6,6 +6,7 @@ import {RegisterModel} from "../../../features/models/registerModel"
 import {AuthenticationService} from "../../../core/services/authentication.service";
 import {Router} from "@angular/router";
 import {SnackBarComponent} from "../snack-bar/snack-bar.component";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-register-form',
@@ -19,11 +20,11 @@ export class RegisterFormComponent implements OnInit{
   roles = Object.values(Role).filter(value => typeof value === 'number');
   genderMapping = GenderMapping;
   roleMapping = RoleMapping;
-  registerModel : RegisterModel
+  hidePassword = true;
+  registerModel: RegisterModel = new RegisterModel();
 
 
-
-  constructor(private authenticationService: AuthenticationService, private router: Router , private snackBar: SnackBarComponent) {
+  constructor(private authenticationService: AuthenticationService, private router: Router , private snackBar: SnackBarComponent, private datePipe: DatePipe) {
 
   }
 
@@ -38,15 +39,20 @@ export class RegisterFormComponent implements OnInit{
       'birthDate': new FormControl(null,Validators.required),
       'gender': new FormControl(null,[Validators.required]),
       'team': new FormControl(null, [Validators.required]),
-      'role': new FormControl(Role.Player,[Validators.required]),
+      'role': new FormControl(null,[Validators.required]),
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, [Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#=+';:_,.?!@$%^&*-]).{10,}$")]),
       'confirmPassword': new FormControl(null, [Validators.required])
     });
   }
 
-  onSubmit(){
-    this.registerModel = this.registerForm.value
+
+
+  onSubmit() {
+    const birthDate = this.datePipe.transform(this.registerForm.value.birthDate, 'mm-dd-yyyy hh:mm:ss PM');
+    this.registerModel = this.registerForm.value;
+    this.registerModel.birthdate = birthDate;
+
     this.authenticationService.register(this.registerModel).subscribe((response: any) => {
       if (response == true) {
         this.redirectToLogin();
@@ -56,7 +62,6 @@ export class RegisterFormComponent implements OnInit{
       }
     });
   }
-
   redirectToLogin(){
     this.router.navigate(['login']);
     this.snackBar.openSnackBar('Your account was successfully created!', '');

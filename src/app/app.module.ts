@@ -19,10 +19,23 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
 import { SnackBarComponent } from './features/components/snack-bar/snack-bar.component';
 import {MatCardModule} from "@angular/material/card";
-import {HttpClientModule}  from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS}  from "@angular/common/http";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginFormComponent } from './features/components/login-form/login-form.component';
-import {ViewDataPageComponent} from "./features/pages/view-data-page/view-data-page.component";
+import { AddTeamComponent } from './features/components/admin-components/add-team/add-team.component';
+import {JwtInterceptor} from "./core/guards/jwt.interceptor";
+import { AdminPageComponent } from './features/pages/admin-page/admin-page.component';
+import {JwtModule} from "@auth0/angular-jwt";
+import { PlayerPageComponent } from './features/pages/player-page/player-page.component';
+import { CoachPageComponent } from './features/pages/coach-page/coach-page.component';
+import { DeleteUserComponent } from './features/components/admin-components/delete-user/delete-user.component';
+import { UserDetailsComponent } from './core/components/user-details/user-details.component';
+import { TeamsListComponent } from './features/components/admin-components/teams-list/teams-list.component';
+import { TeamManagementComponent } from './features/components/admin-components/team-management/team-management.component';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -33,7 +46,14 @@ import {ViewDataPageComponent} from "./features/pages/view-data-page/view-data-p
     LoginPageComponent,
     SnackBarComponent,
     LoginFormComponent,
-    ViewDataPageComponent
+    AddTeamComponent,
+    AdminPageComponent,
+    PlayerPageComponent,
+    CoachPageComponent,
+    DeleteUserComponent,
+    UserDetailsComponent,
+    TeamsListComponent,
+    TeamManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,9 +71,20 @@ import {ViewDataPageComponent} from "./features/pages/view-data-page/view-data-p
     MatNativeDateModule,
     MatCardModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:4200"],
+      },
+    }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

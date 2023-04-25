@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewDataPageComponent } from './view-data-page.component';
+import { DeleteUserComponent } from './delete-user.component';
 
-describe('PlayerPageComponent', () => {
-  let component: ViewDataPageComponent;
-  let fixture: ComponentFixture<ViewDataPageComponent>;
+describe('DeleteUserComponent', () => {
+  let component: DeleteUserComponent;
+  let fixture: ComponentFixture<DeleteUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewDataPageComponent ]
+      declarations: [ DeleteUserComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ViewDataPageComponent);
+    fixture = TestBed.createComponent(DeleteUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

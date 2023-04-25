@@ -1,0 +1,17 @@
+<mat-card class="user-details-card">
+  <mat-card-header>
+    <mat-card-title>My Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content *ngIf="userDetails">
+    <p>FirstName: {{ userDetails.firstName }}</p>
+    <p>LastName: {{ userDetails.lastName }}</p>
+    <p>Email: {{ userDetails.email }}</p>
+    <p>Team: {{ userDetails.team }}</p>
+    <p>Phone: {{ userDetails.phoneNumber }}</p>
+    <p>Birthdate: {{ userDetails.birthDate }}</p>
+    <p>Certified: {{ userDetails.certified }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="button" mat-raised-button color="primary">Edit User</button>
+  </mat-card-actions>
+</mat-card>

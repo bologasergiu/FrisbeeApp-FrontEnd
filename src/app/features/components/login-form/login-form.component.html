@@ -14,7 +14,7 @@
             <div class="col-md-5">
               <mat-form-field>
                 <mat-label for="password">Password</mat-label>
-                <input matInput formControlName="password" />
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" #password>
               </mat-form-field>
             </div>
               <button mat-raised-button color="primary" type="submit" class="login-button" >Login</button>

@@ -2,13 +2,13 @@ import {Gender} from "../../core/enums/gender";
 import {Role} from "../../core/enums/role";
 
 export class RegisterModel{
-  public firstName : String;
-  public lastName : String;
-  public birthdate: String;
-  public email : String;
+  public firstName : string;
+  public lastName : string;
+  public birthdate: string | null;
   public gender: Gender;
-  public team: String;
-  public password : String;
-  public confirmPassword : String;
+  public team: string;
+  public email : string;
+  public password : string;
+  public confirmPassword : string;
   public role: Role;
 }
