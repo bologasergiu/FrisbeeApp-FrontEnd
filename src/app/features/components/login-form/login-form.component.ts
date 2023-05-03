@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginModel} from "../../models/loginModel";
-import {Role} from "../../../core/enums/role";
 import {AuthenticationService} from "../../../core/services/authentication.service";
 import {SnackBarComponent} from "../snack-bar/snack-bar.component";
 import {Router} from "@angular/router";
@@ -14,11 +13,11 @@ import {Router} from "@angular/router";
 export class LoginFormComponent implements OnInit{
   loginForm: FormGroup
   loginModel:LoginModel
-  player: string = "Player"
-  coach: string = "Coach"
-  role: Role
+  hidePassword = true;
+  role: string
+  email: string
 
-  constructor(private authenticationService: AuthenticationService, private snackBar: SnackBarComponent, private router: Router) {
+  constructor(private authService: AuthenticationService, private snackBar: SnackBarComponent, private router: Router) {
   }
   ngOnInit():void {
     this.initForm();
@@ -31,22 +30,35 @@ export class LoginFormComponent implements OnInit{
   }
   onSubmit(){
     this.loginModel = this.loginForm.value;
-    debugger
-    this.authenticationService.login(this.loginModel).subscribe((response: any) => {
+    this.authService.login(this.loginModel).subscribe((response: any) => {
       if (response != null) {
-        this.redirectToViewDataPage();
+        this.redirectToUserDetails();
       }
       else {
         this.openFailedLoginSnackBar();
       }
     });
   }
-  redirectToViewDataPage() {
+  redirectToPageBasedOnRole() {
+    this.role = this.authService.getRole().toString();
+    if (this.role === 'Admin') {
+      this.router.navigate(['/admin']);
+    }
+    else if (this.role === 'Coach') {
+      this.router.navigate(['/coach']);
+    }
+    else if (this.role === 'Player') {
+      this.router.navigate(['/player']);
+    }
+  }
 
-      this.router.navigate(['view-data-page']);
-
+  redirectToUserDetails(){
+    this.router.navigate(['/user']);
   }
   openFailedLoginSnackBar(){
     this.snackBar.openSnackBar('Failed login attempt!','');
+  }
+  usersEmail(){
+    this.email = this.loginForm.value.email;
   }
 }

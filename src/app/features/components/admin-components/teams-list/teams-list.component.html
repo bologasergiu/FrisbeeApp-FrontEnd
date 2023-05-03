@@ -1,0 +1,26 @@
+<mat-card class="component">
+  <mat-card-title class="title">All Teams</mat-card-title>
+  <mat-card-content>
+    <div class="refresh">
+      <button mat-icon-button class="refresh-btn" (click)="refreshList()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+    <mat-card *ngFor="let team of teams" class="team">
+      <div class="team-info">
+        <h2 class="team-name">{{team.teamName}}</h2>
+        <div class="button-container">
+          <button mat-raised-button color="primary" class="btn" (click)="onTeamSelected(team.teamName)">View Members</button>
+          <button mat-raised-button color="primary" class="btn" (click)="deleteTeam(team.teamName)">Delete</button>
+        </div>
+      </div>
+      <div *ngIf="checkTeam(team.teamName)">
+        <h2>Team Members:</h2>
+        <ul>
+          <li *ngFor="let member of teamMembers">{{member.firstName}} {{member.lastName}}</li>
+        </ul>
+        <button mat-raised-button color="primary" class="btn" (click)="toggleTeamMembers()">Collapse</button>
+      </div>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

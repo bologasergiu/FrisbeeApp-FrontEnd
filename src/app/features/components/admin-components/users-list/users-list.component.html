@@ -1,0 +1,60 @@
+<ng-container class="left">
+  <div class="row" >
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef class="users-table-cell"> Last Name </th>
+        <td mat-cell *matCellDef="let user" class="users-table-cell"> {{user.lastName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef class="users-table-cell"> First Name </th>
+        <td mat-cell *matCellDef="let user" class="users-table-cell"> {{user.firstName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef class="users-table-cell"> Email </th>
+        <td mat-cell *matCellDef="let user" class="users-table-cell"> {{user.email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="team">
+        <th mat-header-cell *matHeaderCellDef class="users-table-cell"> Team </th>
+        <td mat-cell *matCellDef="let user" class="users-table-cell"> {{user.team}} </td>
+      </ng-container>
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef class="users-table-cell"> Role </th>
+        <td mat-cell *matCellDef="let user" class="users-table-cell"> {{roleMapping[user.role]}} </td>
+      </ng-container>
+      <ng-container matColumnDef="birthDate">
+        <th mat-header-cell *matHeaderCellDef class="users-table-cell"> Birthdate </th>
+        <td mat-cell *matCellDef="let user" class="users-table-cell"> {{user.birthDate | date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="certified">
+        <th mat-header-cell *matHeaderCellDef class="users-table-cell"> Certified </th>
+        <td mat-cell *matCellDef="let user" class="users-table-cell">
+          <mat-icon *ngIf="user.certified">check_circle</mat-icon>
+          <mat-icon *ngIf="!user.certified">cancel</mat-icon>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="approveAccount">
+        <th mat-header-cell *matHeaderCellDef class="users-table-cell"> Account Status </th>
+        <td mat-cell *matCellDef="let user" class="users-table-cell">
+            <button *ngIf="!user.accountApproved" mat-button class="approve-button" (click)="approveAccount(user.id)">
+              Approve
+            </button>
+            <button *ngIf="user.accountApproved" mat-button class="approve-button" disabled="disabled">
+              [Apporved]
+            </button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef class="users-table-cell"> Delete </th>
+        <td mat-cell *matCellDef="let user" class="users-table-cell">
+          <button mat-icon-button color="warn" [disabled]="isAdmin(user.role)" (click)="onDelete(user.email)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let users; columns: displayedColumns;"></tr>
+    </mat-table>
+  </div>
+</ng-container>
+
+

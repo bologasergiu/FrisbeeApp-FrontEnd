@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewDataPageComponent } from './view-data-page.component';
+import { UsersListComponent } from './users-list.component';
 
-describe('PlayerPageComponent', () => {
-  let component: ViewDataPageComponent;
-  let fixture: ComponentFixture<ViewDataPageComponent>;
+describe('UsersListComponent', () => {
+  let component: UsersListComponent;
+  let fixture: ComponentFixture<UsersListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewDataPageComponent ]
+      declarations: [ UsersListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ViewDataPageComponent);
+    fixture = TestBed.createComponent(UsersListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

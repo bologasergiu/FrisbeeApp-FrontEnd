@@ -1,0 +1,45 @@
+.title{
+  margin-top: 50px;
+  margin-left: 35%;
+  font-size: 30px;
+  font-weight: 600;
+}
+.team{
+  margin-top: 10px;
+}
+.team-info{
+  padding: 10px;
+  padding-left: 10px;
+  margin-top: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.component{
+  margin-top: 100px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+.refresh-btn{
+  margin-left: 900px;
+  justify-content: flex-end;
+
+}
+
+.button-container {
+  justify-content: space-between;
+}
+.btn{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100px;
+  height: 35px;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}

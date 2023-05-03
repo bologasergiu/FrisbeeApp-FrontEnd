@@ -47,11 +47,11 @@
               <div class="col-md-5">
                 <mat-form-field>
                   <mat-label for="password">Password</mat-label>
-                  <input matInput formControlName="password" />
+                  <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" #password  >
                 </mat-form-field>
                 <mat-form-field>
                   <mat-label for="confirmPassword">Confirm Password</mat-label>
-                  <input matInput formControlName="confirmPassword" />
+                  <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword" #password>
                 </mat-form-field>
               </div>
               <div>
