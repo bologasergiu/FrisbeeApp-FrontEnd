@@ -11,12 +11,13 @@ import {PlayerPageComponent} from "./features/pages/player-page/player-page.comp
 import {CoachPageComponent} from "./features/pages/coach-page/coach-page.component";
 import {AuthGuardServiceGuard} from "./core/guards/auth-guard-service.guard";
 import {UserDetailsComponent} from "./core/components/user-details/user-details.component";
-import {AddTeamComponent} from "./features/components/admin-components/add-team/add-team.component";
-import {DeleteUserComponent} from "./features/components/admin-components/delete-user/delete-user.component";
-import {TeamsListComponent} from "./features/components/admin-components/teams-list/teams-list.component";
+
 import {
   TeamManagementComponent
-} from "./features/components/admin-components/team-management/team-management.component";
+} from "./core/components/team-management/team-management.component";
+import {
+  UserManagementComponent
+} from "./core/components/user-management/user-management.component";
 
 const routes: Routes = [
   {
@@ -41,13 +42,18 @@ const routes: Routes = [
     canActivate: [AdminGuard, AuthGuardServiceGuard]
   },
   {
-    path: 'teams-management/add-team',
-    component: AddTeamComponent,
+    path: 'teams-management',
+    component: UserDetailsComponent,
+    canActivate: [AdminGuard, AuthGuardServiceGuard]
+  },
+  {
+    path: 'teams-management',
+    component: UserManagementComponent,
     canActivate: [AdminGuard, AuthGuardServiceGuard]
   },
   {
     path: 'users-management',
-    component: DeleteUserComponent,
+    component: UserManagementComponent,
     canActivate: [AdminGuard, AuthGuardServiceGuard]
   },
   {

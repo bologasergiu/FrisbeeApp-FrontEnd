@@ -45,11 +45,11 @@ export class NavbarComponent implements OnInit {
   isAdmin(): boolean {
     return this.authService.getRole() == "Admin";
   }
-  redirectToAddTeamComponent() {
-    this.router.navigate(['teams-management']);
+  redirectToTeamManagement() {
+    this.router.navigate(['/teams-management']);
   }
-  redirectToDeleteUserComponent() {
-    this.router.navigate(['users-management']);
+  redirectToUsersManagement() {
+    this.router.navigate(['/users-management']);
   }
 
   redirectToUserDetails() {

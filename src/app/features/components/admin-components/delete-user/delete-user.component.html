@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <mat-card>
+      <div class="column">
+        <mat-card-title>Delete User</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="deleteUserFormGroup" (ngSubmit)="deleteUser(email)">
+            <div class="col-md-5">
+              <mat-form-field>
+                <mat-label for="id">User's ID</mat-label>
+                <input matInput formControlName="id" />
+              </mat-form-field>
+              <button mat-raised-button color="primary" type="submit" class="register-button">Submit</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
+</div>
+

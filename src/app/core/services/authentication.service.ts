@@ -25,6 +25,7 @@ export class AuthenticationService{
     return localStorage.getItem('token')
   }
   register(user: RegisterModel): Observable<boolean>{
+    console.log(user);
     return this.http.post<boolean>(environment.baseUrl + '/api/user/register', user);
   }
 

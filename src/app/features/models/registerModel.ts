@@ -4,7 +4,7 @@ import {Role} from "../../core/enums/role";
 export class RegisterModel{
   public firstName : string;
   public lastName : string;
-  public birthdate: string | null;
+  public birthdate: Date;
   public gender: Gender;
   public team: string;
   public email : string;

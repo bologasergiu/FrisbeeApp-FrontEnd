@@ -6,7 +6,6 @@ import {RegisterModel} from "../../../features/models/registerModel"
 import {AuthenticationService} from "../../../core/services/authentication.service";
 import {Router} from "@angular/router";
 import {SnackBarComponent} from "../snack-bar/snack-bar.component";
-import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-register-form',
@@ -24,7 +23,7 @@ export class RegisterFormComponent implements OnInit{
   registerModel: RegisterModel = new RegisterModel();
 
 
-  constructor(private authenticationService: AuthenticationService, private router: Router , private snackBar: SnackBarComponent, private datePipe: DatePipe) {
+  constructor(private authenticationService: AuthenticationService, private router: Router , private snackBar: SnackBarComponent) {
 
   }
 
@@ -46,13 +45,8 @@ export class RegisterFormComponent implements OnInit{
     });
   }
 
-
-
   onSubmit() {
-    const birthDate = this.datePipe.transform(this.registerForm.value.birthDate, 'mm-dd-yyyy hh:mm:ss PM');
     this.registerModel = this.registerForm.value;
-    this.registerModel.birthdate = birthDate;
-
     this.authenticationService.register(this.registerModel).subscribe((response: any) => {
       if (response == true) {
         this.redirectToLogin();

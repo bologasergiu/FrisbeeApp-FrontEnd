@@ -31,7 +31,13 @@ import { CoachPageComponent } from './features/pages/coach-page/coach-page.compo
 import { DeleteUserComponent } from './features/components/admin-components/delete-user/delete-user.component';
 import { UserDetailsComponent } from './core/components/user-details/user-details.component';
 import { TeamsListComponent } from './features/components/admin-components/teams-list/teams-list.component';
-import { TeamManagementComponent } from './features/components/admin-components/team-management/team-management.component';
+import { TeamManagementComponent } from './core/components/team-management/team-management.component';
+import { ConfirmationDialogComponent } from './core/utils/confirmation-dialog/confirmation-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { UserManagementComponent } from './core/components/user-management/user-management.component';
+import { UsersListComponent } from './features/components/admin-components/users-list/users-list.component';
+import {MatTableModule} from "@angular/material/table";
+import { DeleteuserDialogComponent } from './core/utils/deleteuser-dialog/deleteuser-dialog.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -54,6 +60,10 @@ export function tokenGetter() {
     UserDetailsComponent,
     TeamsListComponent,
     TeamManagementComponent,
+    ConfirmationDialogComponent,
+    UserManagementComponent,
+    UsersListComponent,
+    DeleteuserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -72,19 +82,22 @@ export function tokenGetter() {
     MatCardModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatDialogModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         allowedDomains: ["localhost:4200"],
       },
     }),
+    MatTableModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
-      multi: true
+      multi: true,
     }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

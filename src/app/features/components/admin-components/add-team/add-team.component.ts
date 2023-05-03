@@ -1,7 +1,7 @@
-import {Component, ComponentRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AdminService} from "../../../../../core/services/admin.service";
-import {SnackBarComponent} from "../../../snack-bar/snack-bar.component";
+import {AdminService} from "../../../../core/services/admin.service";
+import {SnackBarComponent} from "../../snack-bar/snack-bar.component";
 import {Router} from "@angular/router";
 
 @Component({
@@ -33,9 +33,5 @@ export class AddTeamComponent implements OnInit{
         this.snackbar.openSnackBar("Team was not added",'');
       }
     });
-  }
-
-  isAdmin(){
-    return localStorage.getItem('role') == 'Admin';
   }
 }

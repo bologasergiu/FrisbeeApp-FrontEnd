@@ -10,7 +10,7 @@
     padding: 20px;
     margin: 20px;
 }
-.buttons{
+.button{
     display: flex;
     justify-content: space-between;
     width: 100%;

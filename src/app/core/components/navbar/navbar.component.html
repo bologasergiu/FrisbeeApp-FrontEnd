@@ -2,8 +2,8 @@
   <span style="color:black" >FrisbeeApp</span>
   <div *ngIf="isAdmin()">
     <a class="buttons"  (click)="redirectToUserDetails()">Home</a>
-    <a class="buttons" (click)="redirectToAddTeamComponent()">Teams Management</a>
-    <a class="buttons" (click)="redirectToDeleteUserComponent()">Users management</a>
+    <a class="buttons" (click)="redirectToTeamManagement()">Teams Management</a>
+    <a class="buttons" (click)="redirectToUsersManagement()">Users management</a>
   </div>
   <div class="auth-buttons" style="display: flex;">
     <div *ngIf="!isLoggedIn()">

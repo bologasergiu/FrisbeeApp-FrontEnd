@@ -6,7 +6,11 @@ import {AdminService} from "../../../core/services/admin.service";
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent implements OnInit {
+  teamManagement = false;
   constructor(private service: AdminService) { }
   ngOnInit() {
   };
+
+
+
 }
