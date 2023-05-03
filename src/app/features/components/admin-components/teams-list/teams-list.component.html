@@ -1,14 +1,29 @@
-<mat-card class="mat-card">
-  <mat-card-header>
-    <mat-card-title class="title">Teams List</mat-card-title>
-  </mat-card-header>
-  <div>
-    <mat-card-content *ngFor="let team of teams" class="team-name">
-      <mat-divider></mat-divider>
+<mat-card class="component">
+  <mat-card-title class="title">All Teams</mat-card-title>
+  <mat-card-content>
+    <div class="refresh">
+      <button mat-icon-button class="refresh-btn" (click)="refreshList()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+
+    <mat-card *ngFor="let team of teams" class="team">
       <div class="team-info">
-        <h2>{{team.teamName}}</h2>
+        <h2 class="team-name">{{team.teamName}}</h2>
         <button mat-raised-button color="primary" class="btn" (click)="deleteTeam(team.teamName)">Delete</button>
       </div>
-    </mat-card-content>
-  </div>
+    </mat-card>
+  </mat-card-content>
 </mat-card>
+
+
+
+
+
+
+
+
+
+
+
+

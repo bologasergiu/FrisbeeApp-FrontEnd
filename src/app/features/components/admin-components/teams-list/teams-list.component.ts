@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminService} from "../../../../core/services/admin.service";
-import {TeamModel} from "../../../models/teamModel";
+import {AdminService} from "../../../../../core/services/admin.service";
+import {TeamModel} from "../../../../models/teamModel";
+import {MatDialog} from "@angular/material/dialog";
+import {SnackBarComponent} from "../../../snack-bar/snack-bar.component";
+import {ConfirmationDialogComponent} from "../../../../../core/utils/confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: 'app-teams-list',
@@ -9,7 +12,7 @@ import {TeamModel} from "../../../models/teamModel";
 })
 export class TeamsListComponent implements OnInit {
   teams: TeamModel[];
-  constructor(private service: AdminService) { }
+  constructor(private service: AdminService, private dialog: MatDialog, private snackBar: SnackBarComponent) { }
 
   ngOnInit() {
     this.service.getTeams().subscribe((teams) => {
@@ -17,13 +20,30 @@ export class TeamsListComponent implements OnInit {
     });
   }
   deleteTeam(name: string) {
-    console.log(name)
-    this.service.deleteTeam(name).subscribe(() => {
-      const index = this.teams.findIndex(team => team.teamName === name);
-      console.log(index)
-      if (index !== -1) {
-        this.teams.splice(index, 1);
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent,{
+      data: {teamName: name}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+        if (result.status != 'closed') {
+
+          this.service.deleteTeam(name).subscribe(() => {
+            const index = this.teams.findIndex(team => team.teamName === name);
+            if (index !== -1) {
+              this.snackBar.openSnackBar("Team deleted successfully.", '');
+              this.teams.splice(index, 1);
+            }
+            else {
+              this.snackBar.openSnackBar("Failed to delete team.", '');
+            }
+          });
+        }
       }
+    )
+  }
+  refreshList() {
+    this.service.getTeams().subscribe((teams) => {
+      this.teams = teams;
     });
   }
 }

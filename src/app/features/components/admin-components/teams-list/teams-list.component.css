@@ -1,41 +1,35 @@
-.mat-card{
-    margin-top: 60px;
-    padding: 50px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    box-shadow: 0 0 5px #ccc;
-}
-.team {
-  border: 1px solid gray;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-.mat-card-header {
-  font-weight: bold;
-  font-size: 25px;
-  text-align: center;
-}
 .title{
-  font-weight: bold;
-  font-size: 20px;
-  align-content: center;
+  margin-top: 50px;
+  margin-left: 35%;
+  font-size: 30px;
+  font-weight: 600;
 }
-
-.team-name {
-  border: 10px;
-  height: 100px;
-  padding: 20px;
+.team{
+  margin-top: 10px;
 }
-.child {
-  display: inline-block;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .team-info{
-  display: inline;
+  padding: 10px;
+  padding-left: 10px;
+  margin-top: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
 }
 .btn{
+  margin-right: 10px;
   display: inline;
+  position: absolute;
+  right: 0;
 }
+.component{
+  margin-top: 100px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+.refresh-btn{
+  margin-left: 900px;
+  justify-content: flex-end;
+
+}
+
