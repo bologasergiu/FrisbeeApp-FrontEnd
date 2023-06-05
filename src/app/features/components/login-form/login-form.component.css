@@ -1,101 +1,70 @@
-.container {
-  margin-top: 5%;
-  left: 45%;
-  position: fixed;
-  z-index: 2;
-  width: 570px !important;
-}
-
-mat-card {
-  width: 320px;
-  top: 50px;
-  right:50px;
-  position: relative;
-}
-
-mat-form-field{
-  margin:14px;
-}
-
-mat-card-title {
-  margin-top: 10px;
-  margin-left: 15%;
-  margin-bottom:30px;
-
-}
-
-.register-button{
-  margin-left: 2.8%;
-  height: 50px;
-  width: 150px;
-  margin-bottom: 0.2%;
-}
-
-img {
-  display: block;
-  margin-left: 20%;
+.mat-mdc-card{
+  margin-top: 120px;
+  width: 600px;
+  margin-left: auto;
   margin-right: auto;
-  margin-top: 40%;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .column {
-  width: 1000%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+input.mat-input {
+  font-size: 16px;
   padding: 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: #e0e0e0;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+button {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.mat-card-content{
-  margin-left:25%;
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (max-width: 450px) {
-  .column {
-    width: 70%;
-    display: block;
-    margin-bottom: 20px;
-    margin-left:-10%;
-  }
-
-  .mat-card {
-    width: 100px;
-    top: 50px;
-    position: relative;
-    display: flex;
-  }
-  .mat-card-title{
-    font-size: 20px;
-    text-align:center;
-    margin-left:0%;
-    width:300px;
-  }
+button.change-password-button {
+  font-style: italic;
+  text-decoration: underline;
+  color: blue;
+  background-color: transparent;
+  margin-right: auto;
 }
 
-@media screen and (max-width: 280px) {
-  .mat-card {
-    box-shadow: none;
-  }
+button.login-button {
+  color: white;
+  margin-left: auto;
 }
 
-.fa-user-plus {
-  color: black;
-}
-
-mat-card-title{
-  margin-left: 3.5%;
-}
-
-
-form{
-  margin-left: 0.4%;
-}
-.login-button{
-  margin-left: 1.4%;
-  height: 50px;
-  width: 150px;
-  margin-bottom: 0.2%;
-}

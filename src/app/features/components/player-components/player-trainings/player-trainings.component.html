@@ -1,0 +1,16 @@
+<div class="trainings-container">
+  <div *ngFor="let team of uniqueTeams(trainings)">
+    <h2>{{ team }}</h2>
+    <mat-card *ngFor="let training of trainingsByTeam(trainings, team)">
+      <mat-card-header>
+        <mat-card-title>Training</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Field: {{ training.field }}</p>
+        <p>Date: {{ training.date }}</p>
+        <p>Duration: {{ training.duration }}</p>
+        <p>Coach: {{ training.coachName }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

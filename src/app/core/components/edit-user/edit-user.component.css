@@ -1,0 +1,32 @@
+.edit-user-card {
+  width: 60%;
+  height: auto;
+  margin: 2em auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.birthdate-picker {
+  position: relative;
+}
+
+.birthdate-picker mat-datepicker-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.submit-button {
+  margin-top: 1em;
+}
+
+.mat-mdc-card-title{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}

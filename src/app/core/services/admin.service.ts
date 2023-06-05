@@ -24,6 +24,10 @@ export class AdminService {
   getTeams(): Observable<TeamModel[]> {
     return this.http.get<TeamModel[]>(this.baseUrl + '/api/admin/get-all-teams');
   }
+
+  getTeam(): Observable<TeamModel>{
+    return this.http.get<TeamModel>(this.baseUrl + '/api/admin/get-team');
+  }
   deleteTeam(teamName: string){
     return this.http.put(this.baseUrl + '/api/admin/delete-team/'+ teamName, teamName);
   }
@@ -41,5 +45,9 @@ export class AdminService {
     return this.http.get<UserDetailsModel[]>(this.baseUrl + '/api/User/view-team/'+teamName).pipe(map(data=>{
       return data;
     }));
+  }
+
+  getNumberOfPlayers(teamName: string): Observable<number> {
+    return this.http.get<number>(this.baseUrl + '/api/Admin/get-team-members-count/' +teamName);
   }
 }

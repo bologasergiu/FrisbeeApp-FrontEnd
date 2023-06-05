@@ -1,45 +1,63 @@
-.title{
-  margin-top: 50px;
-  margin-left: 35%;
-  font-size: 30px;
-  font-weight: 600;
-}
-.team{
-  margin-top: 10px;
-}
-.team-info{
-  padding: 10px;
-  padding-left: 10px;
-  margin-top: 15px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  position: relative;
+/* Style for the outer mat-card element */
+.component {
+  margin: 100px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.component{
-  margin-top: 100px;
-  margin-left: 70px;
-  margin-right: 70px;
-}
-.refresh-btn{
-  margin-left: 900px;
-  justify-content: flex-end;
-
+/* Style for the mat-card-title element */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.button-container {
-  justify-content: space-between;
-}
-.btn{
-  margin-top: 10px;
-  margin-left: 10px;
+/* Style for the refresh button */
+.refresh-btn {
   margin-right: 10px;
-  width: 100px;
-  height: 35px;
-  border-radius: 8px;
-  border: 1px solid #000000;
+}
+
+/* Style for the team mat-card element */
+.team {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the team name */
+.team-name {
+  margin: 0;
+}
+
+/* Style for the number of team members */
+.nr-of-players {
+  margin: 0;
+}
+
+/* Style for the button container */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Style for the button */
+.btn {
+  margin-left: 10px;
+}
+
+/* Style for the team members list */
+ul {
+  margin-top: 10px;
+  margin-bottom: 0;
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Style for the team members list items */
+li {
+  margin-bottom: 5px;
   font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
+  color: #030303;
 }

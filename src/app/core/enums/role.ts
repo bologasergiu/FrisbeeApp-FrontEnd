@@ -4,7 +4,6 @@ export enum Role{
   "Admin" =3
 }
 export const RoleMapping: Record<Role, string> = {
-
   [Role.Player]:"Player",
   [Role.Coach]:"Coach",
   [Role.Admin]:"Admin"

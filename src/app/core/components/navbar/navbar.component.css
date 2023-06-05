@@ -1,6 +1,5 @@
 .auth-buttons{
   border: none;
-  color: black;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -26,4 +25,32 @@
 .greeting{
   margin-left: auto;
   font-size: 20px;
+}
+button {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button.change-password-button {
+  font-style: italic;
+  text-decoration: underline;
+  color: blue;
+  background-color: transparent;
+  margin-right: auto;
+}
+
+button.auth-buttons {
+  background-color: #cccc68;
+  color: white;
+  margin-left: auto;
 }

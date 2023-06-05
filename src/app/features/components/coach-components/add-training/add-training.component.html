@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <mat-card>
+      <div class="column">
+        <mat-card-title>Add New Training</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="trainingForm" (ngSubmit)="onSubmit()">
+            <div>
+              <mat-form-field class="date-picker">
+                <mat-label for="date">Date</mat-label>
+                <input matInput readonly formControlName="date" [matDatepicker]="DatePicker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="DatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #DatePicker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label for="field">Field</mat-label>
+                <mat-select formControlName="field" name="field">
+                  <mat-option *ngFor="let option of fields" [value]="option">
+                    {{ fieldsMapping[option] }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label for="duration">Duration</mat-label>
+                <input matInput formControlName="duration" name="duration" type="text">
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="primary" type="submit" class="register-button">Submit</button>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
+</div>

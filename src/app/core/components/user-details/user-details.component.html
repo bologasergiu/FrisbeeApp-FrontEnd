@@ -1,17 +1,50 @@
-<mat-card class="user-details-card">
-  <mat-card-header>
-    <mat-card-title>My Details</mat-card-title>
-  </mat-card-header>
-  <mat-card-content *ngIf="userDetails">
-    <p>FirstName: {{ userDetails.firstName }}</p>
-    <p>LastName: {{ userDetails.lastName }}</p>
-    <p>Email: {{ userDetails.email }}</p>
-    <p>Team: {{ userDetails.team }}</p>
-    <p>Phone: {{ userDetails.phoneNumber }}</p>
-    <p>Birthdate: {{ userDetails.birthDate }}</p>
-    <p>Certified: {{ userDetails.certified }}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button class="button" mat-raised-button color="primary">Edit User</button>
-  </mat-card-actions>
-</mat-card>
+<div class="sidebar" *ngIf="userDetails" class="content">
+  <mat-card class="user-details-card">
+    <mat-card-header class="title">
+      <mat-card-title>My Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+      <div class="details-row">
+        <div class="details-label">First Name:</div>
+        <div class="details-value">{{ userDetails.firstName }}</div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">Last Name:</div>
+        <div class="details-value">{{ userDetails.lastName }}</div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">Email:</div>
+        <div class="details-value">{{ userDetails.email }}</div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">Role:</div>
+        <div class="details-value">{{getRole()}}</div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">Gender:</div>
+        <div class="details-value">{{genderMapping[userDetails.gender]}}</div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">Team:</div>
+        <div class="details-value">{{ userDetails.team }}</div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">Phone:</div>
+        <div class="details-value">{{ userDetails.phoneNumber }}</div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">Birthdate:</div>
+        <div class="details-value">{{getBirthdate(userDetails.birthDate) | date:'MMM d, y'}}</div>
+      </div>
+      <div class="details-row">
+        <div class="details-label">Certified:</div>
+        <div class="details-value">{{ userDetails.certified }}</div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="button" mat-raised-button   (click)="changePassword()">Change Password</button>
+      <button class="button" mat-raised-button color="primary" (click)="onEditUser()">Edit User</button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

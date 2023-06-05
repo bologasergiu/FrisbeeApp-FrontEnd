@@ -1,0 +1,71 @@
+import { Component, OnInit } from '@angular/core';
+import { CoachService } from "../../../../core/services/coach.service";
+import { MatTableDataSource } from "@angular/material/table";
+import { TrainingModel } from "../../../models/trainingModel";
+import {TeamModel} from "../../../models/teamModel";
+import {AdminService} from "../../../../core/services/admin.service";
+
+@Component({
+  selector: 'app-trainings-table',
+  templateUrl: './trainings-table.component.html',
+  styleUrls: ['./trainings-table.component.css']
+})
+export class TrainingsTableComponent implements OnInit {
+  dataSource = new MatTableDataSource<TrainingModel>([]);
+  trainingModel: TrainingModel[] = [];
+  currentPage = 0;
+  pageSize = 10;
+  totalPages: number;
+  displayedColumns: string[] = ['index', 'date', 'duration', 'field', 'coachName'];
+  teamModel : TeamModel[] = [];
+  constructor(private coachService: CoachService, private adminService: AdminService) { }
+
+  ngOnInit(): void {
+    this.loadTrainings();
+  }
+
+  loadTrainings(): void {
+    this.coachService.getTrainings().subscribe(
+      (data: TrainingModel[]) => {
+        this.trainingModel = data;
+        this.updateDataSource();
+        this.calculateTotalPages();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.coachService.getTeams().subscribe(
+      (data: TeamModel[]) => {
+        this.teamModel = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  goToPreviousPage(): void {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.updateDataSource();
+    }
+  }
+
+  goToNextPage(): void {
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+      this.updateDataSource();
+    }
+  }
+
+  updateDataSource(): void {
+    const startIndex = this.currentPage * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    const data = this.trainingModel.slice(startIndex, endIndex);
+    this.dataSource.data = data;
+  }
+
+  calculateTotalPages(): void {
+    this.totalPages = Math.ceil(this.trainingModel.length / this.pageSize);
+  }
+}

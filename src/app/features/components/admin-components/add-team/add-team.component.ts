@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AdminService} from "../../../../core/services/admin.service";
 import {SnackBarComponent} from "../../snack-bar/snack-bar.component";
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   templateUrl: './add-team.component.html',
   styleUrls: ['./add-team.component.css']
 })
-export class AddTeamComponent implements OnInit{
+export class AddTeamComponent implements OnInit, OnDestroy{
   addTeamForm: FormGroup
   teamName: string
 
@@ -33,5 +33,11 @@ export class AddTeamComponent implements OnInit{
         this.snackbar.openSnackBar("Team was not added",'');
       }
     });
+    this.addTeamForm.reset();
   }
+
+  ngOnDestroy() {
+    this.addTeamForm.controls['teamName'].markAsUntouched();
+  }
+
 }

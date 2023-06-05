@@ -38,21 +38,37 @@ export class NavbarComponent implements OnInit {
     return localStorage.getItem("token") != undefined;
   }
 
-  getUserEmail() {
-    return this.authService.getUserEmail();
-  }
-
   isAdmin(): boolean {
     return this.authService.getRole() == "Admin";
+  }
+   isPlayer(): boolean {
+    return this.authService.getRole() == "Player";
+  }
+  isCoach(): boolean {
+    return this.authService.getRole() == "Coach";
   }
   redirectToTeamManagement() {
     this.router.navigate(['/teams-management']);
   }
+  redirectToTimeOffRequest() {
+    this.router.navigate(['/player-time-off-request']);
+  }
+
+  redirectToTrainings() {
+    this.router.navigate(['/player-trainings']);
+  }
   redirectToUsersManagement() {
     this.router.navigate(['/users-management']);
   }
-
   redirectToUserDetails() {
     this.router.navigate(['/user']);
+  }
+
+  redirectToCoachTimeOffRequest(){
+    this.router.navigate(['/coach-time-off-request'])
+  }
+
+  redirectToCoachTrainings(){
+    this.router.navigate(['/coach-trainings'])
   }
 }

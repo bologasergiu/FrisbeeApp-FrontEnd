@@ -4,6 +4,7 @@ import {TeamModel} from "../../../models/teamModel";
 import {MatDialog} from "@angular/material/dialog";
 import {SnackBarComponent} from "../../snack-bar/snack-bar.component";
 import {ConfirmationDialogComponent} from "../../../../core/utils/confirmation-dialog/confirmation-dialog.component";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-teams-list',
@@ -15,12 +16,15 @@ export class TeamsListComponent implements OnInit {
   teams: TeamModel[];
   selectedTeam: any;
   teamMembers: any[];
+  numberOfPlayers: Observable<number>;
+
   constructor(private service: AdminService, private dialog: MatDialog, private snackBar: SnackBarComponent) { }
 
   onTeamSelected(teamName: string) {
     this.selectedTeam= teamName;
     this.service.getTeamMembers(teamName).subscribe((members: any[]) => {
       this.teamMembers = members;
+      this.isCollapsed = false;
     });
   }
 
@@ -69,5 +73,10 @@ export class TeamsListComponent implements OnInit {
 
   toggleTeamMembers(){
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  getNumberOfPlayers(teamName: string){
+    this.numberOfPlayers = this.service.getNumberOfPlayers(teamName);
+    return this.numberOfPlayers;
   }
 }
