@@ -1,4 +1,4 @@
-import {Component, OnInit, Pipe} from '@angular/core';
+import {Component, Input, OnInit, Pipe} from '@angular/core';
 import {AuthenticationService} from "../../services/authentication.service";
 import {UserDetailsModel} from "../../../features/models/userDetailsModel";
 import {MatDialog} from "@angular/material/dialog";
@@ -14,6 +14,7 @@ import {ChangePasswordComponent} from "../change-password/change-password.compon
   styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent implements OnInit{
+
   userDetails: UserDetailsModel;
   genderMapping = GenderMapping;
 
@@ -31,8 +32,9 @@ export class UserDetailsComponent implements OnInit{
   onEditUser() {
     const dialogRef = this.dialog.open(EditUserComponent, {
       width: '500px',
-      data: { userDetails: this.userDetails }
+
     });
+    dialogRef.componentInstance.userDetails = this.userDetails;
     dialogRef.afterClosed().subscribe(result => {
     });
   }

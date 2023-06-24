@@ -60,9 +60,6 @@ export class LoginFormComponent implements OnInit{
   openFailedLoginSnackBar(){
     this.snackBar.openSnackBar('Failed login attempt!','');
   }
-  usersEmail(){
-    this.email = this.loginForm.value.email;
-  }
   changePassword() {
     const dialogRef = this.dialog.open(ChangePasswordComponent, {
       width: '500px',

@@ -13,49 +13,38 @@ import {MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-  changePasswordForm: FormGroup;
-  changePasswordModel: ChangePasswordModel = new ChangePasswordModel();
-  hidePassword = true;
+  emailForm: FormGroup;
+  email: string = '';
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private authService: AuthenticationService, private snackBar: SnackBarComponent, private dialogRef: MatDialogRef<ChangePasswordComponent>) {}
+  constructor( private fb: FormBuilder, private userService: UserService, private router: Router, private authService: AuthenticationService, private snackBar: SnackBarComponent, private dialogRef: MatDialogRef<ChangePasswordComponent>) {}
 
   ngOnInit() {
     this.initForm();
   }
 
   initForm() {
-    this.changePasswordForm = this.fb.group({
+    this.emailForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required, Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#=+\';:_,.?!@$%^&*-]).{10,}$')],],
-      confirmPassword: [null, [Validators.required]]
     });
   }
 
   onSubmit() {
-    if (this.changePasswordForm) {
-      this.changePasswordModel = this.changePasswordForm.value;
-      this.userService.changePassword(this.changePasswordModel).subscribe(
-        (response: any) => {
-          if (response == true) {
-            this.openSuccessfulChangePasswordSnackBar();
-            this.authService.logout();
-            this.redirectToLogin();
-            this.dialogRef.close();
-          } else {
-            this.openFailedChangePasswordSnackBar();
-          }
-        }
-      );
-    }
+    this.email = this.emailForm.value.email;
+    this.userService.changePasswordRequest(this.email).subscribe((data) => {
+      if (data) {
+        this.openSuccessfulChangePasswordSnackBar();
+        this.dialogRef.close();
+      } else {
+        this.openFailedChangePasswordSnackBar();
+      }
+    });
   }
   openSuccessfulChangePasswordSnackBar() {
-    this.snackBar.openSnackBar("Password changed successfully!", "Close");
+    this.snackBar.openSnackBar("Please verify your email", "Close");
   }
   openFailedChangePasswordSnackBar() {
-    this.snackBar.openSnackBar("Password change failed!", "Close");
+    this.snackBar.openSnackBar("Invalid email", "Close");
   }
-
-
   redirectToLogin() {
     this.router.navigate(['login']);
   }

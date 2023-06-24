@@ -1,19 +1,10 @@
-.sidebar {
-  position: fixed;
-  top: 10%;
-  left: 0;
-  bottom: 0;
-  height: 100%;
-  width: 300px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  overflow-y: auto;
-}
 
 .user-details-card {
-  margin-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   height: auto;
   width: 400px;

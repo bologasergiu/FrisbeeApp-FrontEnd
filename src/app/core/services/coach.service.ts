@@ -35,4 +35,7 @@ export class CoachService {
   addTraining(trainingModel: TrainingModel) : Observable<boolean>{
     return this.http.post<boolean>(this.baseUrl + '/api/coach/add-training/', trainingModel);
   }
+  getTrainingsPerTeam(teamName: string): Observable<TrainingModel[]> {
+    return this.http.get<TrainingModel[]>(this.baseUrl + '/api/coach/get-trainings-per-team'+ teamName);
+  }
 }

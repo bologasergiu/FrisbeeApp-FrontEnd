@@ -61,9 +61,9 @@
       <tr mat-row *matRowDef="let requests; columns: displayedColumns;"></tr>
     </mat-table>
     <div class="buttons-container">
-      <div class="buttons-right">
-        <button class="btn btn-primary" (click)="editStatus()">Edit</button>
-        <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+      <div class="buttons">
+        <button mat-raised-button class="edit-button" (click)="editStatus()">Edit</button>
+        <button mat-raised-button class="cancel-button" (click)="cancel()">Cancel</button>
       </div>
       <div class="pagination-info">
         <button class="btn btn-icon" (click)="goToPreviousPage()" [disabled]="currentPage === 0">

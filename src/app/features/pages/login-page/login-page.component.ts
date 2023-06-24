@@ -7,5 +7,6 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LoginPageComponent implements OnInit{
   ngOnInit(): void {
+    localStorage.clear()
   }
 }

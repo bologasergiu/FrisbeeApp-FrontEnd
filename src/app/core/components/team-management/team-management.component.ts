@@ -13,7 +13,4 @@ export class TeamManagementComponent implements OnInit{
 
     ngOnInit(): void {
     }
-
-
-
 }

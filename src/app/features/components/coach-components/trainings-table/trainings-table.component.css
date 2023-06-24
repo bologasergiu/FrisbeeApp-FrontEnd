@@ -1,116 +1,92 @@
 .row {
-  position: relative;
-}
-
-.input-group {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.form-outline {
-  position: relative;
-  flex-grow: 1;
-}
-
-.form-control {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
 }
 
-.form-label {
-  position: absolute;
-  top: 50%;
-  right: 24px;
-  transform: translateY(-50%);
-  color: #999;
-  transition: all 0.2s ease-out;
-  pointer-events: none;
-}
-
-.form-control:focus + .form-label,
-.form-control:not(:placeholder-shown) + .form-label {
-  top: 0px; /* Adjust the top position based on your preference */
-  right: 12px; /* Move the label to the right side */
-  font-size: 12px;
-  color: #666;
-  background-color: #fff;
-  padding: 0 4px;
-}
-
-.btn-primary {
-  margin-right: 8px;
-  margin-left: 8px;
-}
-
-.users-table-cell {
-  width: auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  max-width: 800px;
-  height: 100%;
-  vertical-align: middle;
-}
-
-.mat-table-wrapper {
-  min-height: 300px; /* Adjust the minimum height as needed */
+.table-wrapper {
+  width: 550px;
+  overflow-x: auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .table-container {
   width: 100%;
+  white-space: nowrap;
   overflow-x: auto;
-  margin: 0;
-  padding: 0;
 }
 
-.status{
+.mat-table {
   width: 100%;
-  height: 100%;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.pagination-info {
   display: flex;
   align-items: center;
-  justify-content: center;
+  font-size: 14px;
 }
-
-.custom-select {
-  color: #495057;
-  background-color: #f8f9fa;
-  padding: 12px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.custom-select:focus {
-  outline: none;
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.custom-select option[hidden] {
-  display: none;
-}
-
-.custom-select option[disabled]:first-child {
-  color: #999;
-}
-
-.custom-select option[disabled]:first-child[selected] {
-  color: #495057;
-}
-
-
 
 .page-info {
-  margin-left: 370px;
-  margin-right: 370px;
+  margin: 0 10px;
 }
 
-.buttons-right{
-  margin-right: 10px;
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+.mat-table {
+  font-size: 14px;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 10px;
+  text-align: left;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.mat-header-row {
+  background-color: #eee;
+}
+
+.buttons-container button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.buttons-container button i {
+  vertical-align: middle;
+}
+
+.buttons-container button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}

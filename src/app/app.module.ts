@@ -51,6 +51,9 @@ import { AddTrainingComponent } from './features/components/coach-components/add
 import { PlayerTrainingsComponent } from './features/components/player-components/player-trainings/player-trainings.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { TrainingsTableComponent } from './features/components/coach-components/trainings-table/trainings-table.component';
+import { TimeOffRequestsTableComponent } from './features/components/player-components/time-off-requests-table/time-off-requests-table.component';
+import { PasswordResetComponent } from './core/components/password-reset/password-reset.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -87,7 +90,9 @@ export function tokenGetter() {
     CoachTrainingsComponent,
     AddTrainingComponent,
     PlayerTrainingsComponent,
-    TrainingsTableComponent
+    TrainingsTableComponent,
+    TimeOffRequestsTableComponent,
+    PasswordResetComponent
   ],
     imports: [
         BrowserModule,
@@ -116,7 +121,8 @@ export function tokenGetter() {
         MatTableModule,
         FormsModule,
         CdkDragPlaceholder,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        MatGridListModule
     ],
   providers: [
     {

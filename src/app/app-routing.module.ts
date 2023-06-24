@@ -22,6 +22,8 @@ import {
 import {
   PlayerTrainingsComponent
 } from "./features/components/player-components/player-trainings/player-trainings.component";
+import {ChangePasswordComponent} from "./core/components/change-password/change-password.component";
+import {PasswordResetComponent} from "./core/components/password-reset/password-reset.component";
 
 const routes: Routes = [
   {
@@ -35,6 +37,17 @@ const routes: Routes = [
     path: 'login',
     component: LoginPageComponent
   },
+
+  {
+    path: 'change-password',
+    component: PasswordResetComponent
+  },
+  {
+    path: 'user',
+    component: UserDetailsComponent,
+    canActivate: [AuthGuardServiceGuard]
+  },
+
   {
     path: 'admin',
     component: AdminPageComponent,
@@ -75,12 +88,8 @@ const routes: Routes = [
     path: 'users-management',
     component: UserManagementComponent,
     canActivate: [AdminGuard, AuthGuardServiceGuard]
-  },
-  {
-    path: 'user',
-    component: UserDetailsComponent,
-    canActivate: [AuthGuardServiceGuard]
   }
+
 ];
 
 @NgModule({
