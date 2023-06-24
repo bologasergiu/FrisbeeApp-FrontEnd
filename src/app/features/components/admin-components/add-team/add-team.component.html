@@ -2,16 +2,14 @@
   <mat-card-title class="title">Add Team</mat-card-title>
   <mat-card-content>
     <form [formGroup]="addTeamForm" (ngSubmit)="onSubmit()">
-      <mat-form-field class="input">
-        <mat-label for="teamName">Team Name</mat-label>
+      <mat-form-field class="input" [ngClass]="{'has-error': addTeamForm.controls.teamName.invalid && addTeamForm.controls.teamName.touched}">
+        <mat-label for="teamName" [ngClass]="{'required-field': addTeamForm.controls.teamName.invalid}">Team Name</mat-label>
         <input type="string" matInput formControlName="teamName" />
+        <div *ngIf="addTeamForm.controls.teamName.invalid && addTeamForm.controls.teamName.touched" ></div>
       </mat-form-field>
       <div class="btn">
-        <button mat-raised-button color="primary" type="submit" >Submit</button>
+        <button mat-raised-button type="submit">Submit</button>
       </div>
     </form>
   </mat-card-content>
 </mat-card>
-
-
-

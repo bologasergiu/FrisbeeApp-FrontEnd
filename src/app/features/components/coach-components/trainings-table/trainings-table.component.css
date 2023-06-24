@@ -1,0 +1,92 @@
+.row {
+  width: 100%;
+}
+
+.table-wrapper {
+  width: 550px;
+  overflow-x: auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.table-container {
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.pagination-info {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.page-info {
+  margin: 0 10px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+.mat-table {
+  font-size: 14px;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 10px;
+  text-align: left;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.mat-header-row {
+  background-color: #eee;
+}
+
+.buttons-container button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.buttons-container button i {
+  vertical-align: middle;
+}
+
+.buttons-container button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}

@@ -5,6 +5,17 @@
     <a class="buttons" (click)="redirectToTeamManagement()">Teams Management</a>
     <a class="buttons" (click)="redirectToUsersManagement()">Users management</a>
   </div>
+  <div *ngIf="isPlayer()">
+    <a class="buttons"  (click)="redirectToUserDetails()">Home</a>
+    <a class="buttons" (click)="redirectToTimeOffRequest()">Time-off requests</a>
+    <a class="buttons" (click)="redirectToTrainings()">Trainings</a>
+  </div>
+
+  <div *ngIf="isCoach()">
+    <a class="buttons"  (click)="redirectToUserDetails()">Home</a>
+    <a class="buttons" (click)="redirectToCoachTimeOffRequest()">Time-off requests</a>
+    <a class="buttons" (click)="redirectToCoachTrainings()">Trainings</a>
+  </div>
   <div class="auth-buttons" style="display: flex;">
     <div *ngIf="!isLoggedIn()">
       <button *ngIf="isOnLoginPage" mat-raised-button (click)="goToRegister()">Register</button>

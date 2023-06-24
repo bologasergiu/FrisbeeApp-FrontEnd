@@ -7,17 +7,23 @@ import {AdminPageComponent} from "./features/pages/admin-page/admin-page.compone
 import {AdminGuard} from "./core/guards/admin.guard";
 import {CoachGuard} from "./core/guards/coach.guard";
 import {PlayerGuard} from "./core/guards/player.guard";
-import {PlayerPageComponent} from "./features/pages/player-page/player-page.component";
-import {CoachPageComponent} from "./features/pages/coach-page/coach-page.component";
 import {AuthGuardServiceGuard} from "./core/guards/auth-guard-service.guard";
 import {UserDetailsComponent} from "./core/components/user-details/user-details.component";
-
+import {TeamManagementComponent} from "./core/components/team-management/team-management.component";
+import {UserManagementComponent} from "./core/components/user-management/user-management.component";
+import {PlayerTimeOffRequestsComponent} from "./features/components/player-components/player-time-off-requests/time-off-requests.component";
+import {AddTimeOffRequestComponent} from "./features/components/player-components/add-time-off-request/add-time-off-request.component";
 import {
-  TeamManagementComponent
-} from "./core/components/team-management/team-management.component";
+  CoachTimeOffRequestsComponent
+} from "./features/components/coach-components/coach-time-off-requests/coach-time-off-requests.component";
 import {
-  UserManagementComponent
-} from "./core/components/user-management/user-management.component";
+  CoachTrainingsComponent
+} from "./features/components/coach-components/coach-trainings/coach-trainings.component";
+import {
+  PlayerTrainingsComponent
+} from "./features/components/player-components/player-trainings/player-trainings.component";
+import {ChangePasswordComponent} from "./core/components/change-password/change-password.component";
+import {PasswordResetComponent} from "./core/components/password-reset/password-reset.component";
 
 const routes: Routes = [
   {
@@ -31,46 +37,59 @@ const routes: Routes = [
     path: 'login',
     component: LoginPageComponent
   },
+
+  {
+    path: 'change-password',
+    component: PasswordResetComponent
+  },
+  {
+    path: 'user',
+    component: UserDetailsComponent,
+    canActivate: [AuthGuardServiceGuard]
+  },
+
   {
     path: 'admin',
     component: AdminPageComponent,
     canActivate: [AdminGuard, AuthGuardServiceGuard]
   },
   {
+    path: 'player-time-off-request',
+    component: PlayerTimeOffRequestsComponent,
+    canActivate: [PlayerGuard, AuthGuardServiceGuard]
+  },
+  {
+    path: 'coach-time-off-request',
+    component: CoachTimeOffRequestsComponent,
+    canActivate: [CoachGuard, AuthGuardServiceGuard]
+  },
+  {
+    path: 'time-off-request',
+    component: AddTimeOffRequestComponent,
+    canActivate: [PlayerGuard, AuthGuardServiceGuard]
+  },
+  {
+    path: 'player-trainings',
+    component: PlayerTrainingsComponent,
+    canActivate: [PlayerGuard, AuthGuardServiceGuard]
+  },
+  {
+    path: 'coach-trainings',
+    component: CoachTrainingsComponent,
+    canActivate: [CoachGuard, AuthGuardServiceGuard]
+  },
+
+  {
     path: 'teams-management',
     component: TeamManagementComponent,
-    canActivate: [AdminGuard, AuthGuardServiceGuard]
-  },
-  {
-    path: 'teams-management',
-    component: UserDetailsComponent,
-    canActivate: [AdminGuard, AuthGuardServiceGuard]
-  },
-  {
-    path: 'teams-management',
-    component: UserManagementComponent,
     canActivate: [AdminGuard, AuthGuardServiceGuard]
   },
   {
     path: 'users-management',
     component: UserManagementComponent,
     canActivate: [AdminGuard, AuthGuardServiceGuard]
-  },
-  {
-    path: 'player',
-    component: PlayerPageComponent,
-    canActivate: [PlayerGuard]
-  },
-  {
-    path: 'coach',
-    component: CoachPageComponent,
-    canActivate: [CoachGuard]
-  },
-  {
-    path: 'user',
-    component: UserDetailsComponent,
-    canActivate: [AuthGuardServiceGuard]
   }
+
 ];
 
 @NgModule({

@@ -8,12 +8,9 @@ import {Router} from "@angular/router";
 })
 export class TeamManagementComponent implements OnInit{
 
-    constructor(private router: Router) {
+    constructor() {
     }
 
     ngOnInit(): void {
     }
-
-
-
 }

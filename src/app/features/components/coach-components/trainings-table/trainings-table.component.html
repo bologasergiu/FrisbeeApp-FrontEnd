@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="table-container">
+    <div class="table-wrapper">
+      <h2>View Existing Trainings</h2>
+      <p>Please select the team:
+        <select [(ngModel)]="selectedTeam" (ngModelChange)="onSelect()">
+          <option *ngFor="let team of teamModel" [value]="team.teamName">{{team.teamName}}</option>
+        </select>
+      </p>
+      <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="index" class="cell-container modern-cell">
+          <th mat-header-cell *matHeaderCellDef class="trainings-table-cell">Index</th>
+          <td mat-cell *matCellDef="let training; let i = index" class="trainings-table-cell">{{ i + 1 }}.</td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef class="trainings-table-cell">Date</th>
+          <td mat-cell *matCellDef="let training" class="trainings-table-cell">{{ training.date | date }}</td>
+        </ng-container>
+        <ng-container matColumnDef="duration">
+          <th mat-header-cell *matHeaderCellDef class="trainings-table-cell">Duration</th>
+          <td mat-cell *matCellDef="let training" class="trainings-table-cell">{{ training.duration }}</td>
+        </ng-container>
+        <ng-container matColumnDef="field">
+          <th mat-header-cell *matHeaderCellDef class="trainings-table-cell">Field</th>
+          <td mat-cell *matCellDef="let training" class="trainings-table-cell">{{ training.field }}</td>
+        </ng-container>
+        <ng-container matColumnDef="team">
+          <th mat-header-cell *matHeaderCellDef class="trainings-table-cell">Team</th>
+          <td mat-cell *matCellDef="let training" class="trainings-table-cell">{{ training.team }}</td>
+        </ng-container>
+        <ng-container matColumnDef="coachName">
+          <th mat-header-cell *matHeaderCellDef class="trainings-table-cell">Coach Name</th>
+          <td mat-cell *matCellDef="let training" class="trainings-table-cell">{{ training.coachName }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let training; columns: displayedColumns;"></tr>
+      </mat-table>
+    <div class="buttons-container">
+      <div class="pagination-info">
+        <button class="btn btn-icon" (click)="goToPreviousPage()" [disabled]="currentPage === 0">
+          <i class="material-icons">chevron_left</i>
+        </button>
+        <span class="page-info">Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+        <button class="btn btn-icon" (click)="goToNextPage()" [disabled]="currentPage === totalPages - 1">
+          <i class="material-icons">chevron_right</i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -4,6 +4,7 @@ import {TeamModel} from "../../../models/teamModel";
 import {MatDialog} from "@angular/material/dialog";
 import {SnackBarComponent} from "../../snack-bar/snack-bar.component";
 import {ConfirmationDialogComponent} from "../../../../core/utils/confirmation-dialog/confirmation-dialog.component";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-teams-list',
@@ -15,29 +16,31 @@ export class TeamsListComponent implements OnInit {
   teams: TeamModel[];
   selectedTeam: any;
   teamMembers: any[];
-  constructor(private service: AdminService, private dialog: MatDialog, private snackBar: SnackBarComponent) { }
+  numberOfPlayers: Observable<number>;
+
+  constructor(private adminService: AdminService, private dialog: MatDialog, private snackBar: SnackBarComponent) { }
 
   onTeamSelected(teamName: string) {
     this.selectedTeam= teamName;
-    this.service.getTeamMembers(teamName).subscribe((members: any[]) => {
+    this.adminService.getTeamMembers(teamName).subscribe((members: any[]) => {
       this.teamMembers = members;
+      this.isCollapsed = false;
     });
   }
 
   ngOnInit() {
-    this.service.getTeams().subscribe((teams) => {
+    this.adminService.getTeams().subscribe((teams) => {
       this.teams = teams;
     });
   }
   deleteTeam(name: string) {
-
     const dialogRef = this.dialog.open(ConfirmationDialogComponent,{
       data: {teamName: name}
     });
     dialogRef.afterClosed().subscribe(result => {
         if (result.status != 'closed') {
 
-          this.service.deleteTeam(name).subscribe(() => {
+          this.adminService.deleteTeam(name).subscribe(() => {
             const index = this.teams.findIndex(team => team.teamName === name);
             if (index !== -1) {
               this.snackBar.openSnackBar("Team deleted successfully.", '');
@@ -53,7 +56,7 @@ export class TeamsListComponent implements OnInit {
     )
   }
   refreshList() {
-    this.service.getTeams().subscribe((teams) => {
+    this.adminService.getTeams().subscribe((teams) => {
       this.teams = teams;
     });
   }
@@ -69,5 +72,10 @@ export class TeamsListComponent implements OnInit {
 
   toggleTeamMembers(){
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  getNumberOfPlayers(teamName: string){
+    this.numberOfPlayers = this.adminService.getNumberOfPlayers(teamName);
+    return this.numberOfPlayers;
   }
 }

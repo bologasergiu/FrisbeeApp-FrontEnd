@@ -57,7 +57,7 @@ export class UsersListComponent implements OnInit {
               this.table.renderRows();
             }
             else {
-              this.snackBar.openSnackBar("Failed to delete team.", '');
+              this.snackBar.openSnackBar("Failed to delete user.", '');
             }
           });
         }

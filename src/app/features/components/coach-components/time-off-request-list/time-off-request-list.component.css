@@ -1,0 +1,141 @@
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  max-width: 940px;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-outline {
+  position: relative;
+  flex-grow: 1;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.form-label {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  color: #999;
+  transition: all 0.2s ease-out;
+  pointer-events: none;
+}
+
+.form-control:focus + .form-label,
+.form-control:not(:placeholder-shown) + .form-label {
+  top: 0px; /* Adjust the top position based on your preference */
+  right: 12px; /* Move the label to the right side */
+  font-size: 12px;
+  color: #666;
+  background-color: #fff;
+  padding: 0 4px;
+}
+
+.btn-primary {
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.users-table-cell {
+  text-align: center;
+}
+
+.mat-table-wrapper {
+  min-height: 300px; /* Adjust the minimum height as needed */
+}
+
+.search-bar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; /* Add some spacing between the search bar and the table */
+}
+
+.search-bar {
+  width: 100%; /* Set the width to 100% */
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-select {
+  color: #495057;
+  background-color: #f8f9fa;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.custom-select:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.custom-select option[hidden] {
+  display: none;
+}
+
+.custom-select option[disabled]:first-child {
+  color: #999;
+}
+
+.custom-select option[disabled]:first-child[selected] {
+  color: #495057;
+}
+
+.page-info {
+  margin: auto;
+}
+
+.buttons-right {
+  margin-right: 10px;
+}
+
+.table-container {
+  width: auto;
+  overflow-x: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.table-container .mat-table {
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+.pagination-info {
+  display: flex;
+  align-items: center;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.edit-button{
+  background-color: #673ab7;
+  margin-left: 5px;
+}
+.cancel-button{
+  background-color: #eee6e6;
+  margin-left: 5px;
+}

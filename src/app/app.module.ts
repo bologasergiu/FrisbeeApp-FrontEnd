@@ -12,7 +12,7 @@ import { RegisterPageComponent } from './features/pages/register-page/register-p
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import { LoginPageComponent } from './features/pages/login-page/login-page.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
@@ -38,6 +38,22 @@ import { UserManagementComponent } from './core/components/user-management/user-
 import { UsersListComponent } from './features/components/admin-components/users-list/users-list.component';
 import {MatTableModule} from "@angular/material/table";
 import { DeleteuserDialogComponent } from './core/utils/deleteuser-dialog/deleteuser-dialog.component';
+import { EditUserComponent } from './core/components/edit-user/edit-user.component';
+import { AddTimeOffRequestComponent } from './features/components/player-components/add-time-off-request/add-time-off-request.component';
+import {PlayerTimeOffRequestsComponent} from './features/components/player-components/player-time-off-requests/time-off-requests.component';
+import { ChangePasswordComponent } from './core/components/change-password/change-password.component';
+import { TimeOffRequestListComponent } from './features/components/coach-components/time-off-request-list/time-off-request-list.component';
+import { CoachTimeOffRequestsComponent } from './features/components/coach-components/coach-time-off-requests/coach-time-off-requests.component';
+import { SearchFilterPipe } from './core/pipes/search-filter.pipe';
+import {CdkDragPlaceholder} from "@angular/cdk/drag-drop";
+import { CoachTrainingsComponent } from './features/components/coach-components/coach-trainings/coach-trainings.component';
+import { AddTrainingComponent } from './features/components/coach-components/add-training/add-training.component';
+import { PlayerTrainingsComponent } from './features/components/player-components/player-trainings/player-trainings.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { TrainingsTableComponent } from './features/components/coach-components/trainings-table/trainings-table.component';
+import { TimeOffRequestsTableComponent } from './features/components/player-components/time-off-requests-table/time-off-requests-table.component';
+import { PasswordResetComponent } from './core/components/password-reset/password-reset.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -63,34 +79,51 @@ export function tokenGetter() {
     ConfirmationDialogComponent,
     UserManagementComponent,
     UsersListComponent,
-    DeleteuserDialogComponent
+    DeleteuserDialogComponent,
+    EditUserComponent,
+    AddTimeOffRequestComponent,
+    PlayerTimeOffRequestsComponent,
+    ChangePasswordComponent,
+    TimeOffRequestListComponent,
+    CoachTimeOffRequestsComponent,
+    SearchFilterPipe,
+    CoachTrainingsComponent,
+    AddTrainingComponent,
+    PlayerTrainingsComponent,
+    TrainingsTableComponent,
+    TimeOffRequestsTableComponent,
+    PasswordResetComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatListModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCardModule,
-    HttpClientModule,
-    MatSnackBarModule,
-    MatDialogModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ["localhost:4200"],
-      },
-    }),
-    MatTableModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatListModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCardModule,
+        HttpClientModule,
+        MatSnackBarModule,
+        MatDialogModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: tokenGetter,
+                allowedDomains: ["localhost:4200"],
+            },
+        }),
+        MatTableModule,
+        FormsModule,
+        CdkDragPlaceholder,
+        MatAutocompleteModule,
+        MatGridListModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

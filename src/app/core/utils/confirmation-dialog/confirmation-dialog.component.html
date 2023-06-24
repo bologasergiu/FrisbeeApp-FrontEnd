@@ -1,7 +1,12 @@
 <div mat-dialog-content>
   <p>You are about to delete <b>{{data.teamName}}</b>. Are you sure?</p>
 </div>
-<div mat-dialog-actions>
-  <button mat-raised-button color="primary"  (click)="onAction()">Yes</button>
-  <button mat-raised-button color="warn" (click)="closeDialog()">No</button>
+<div mat-dialog-actions class="buttons">
+  <button mat-raised-button class="yes-button"   (click)="onAction()">Yes</button>
+  <button mat-raised-button class="no-button" (click)="closeDialog()">No</button>
 </div>
+
+
+
+
+

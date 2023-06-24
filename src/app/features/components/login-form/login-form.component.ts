@@ -4,6 +4,8 @@ import {LoginModel} from "../../models/loginModel";
 import {AuthenticationService} from "../../../core/services/authentication.service";
 import {SnackBarComponent} from "../snack-bar/snack-bar.component";
 import {Router} from "@angular/router";
+import {ChangePasswordComponent} from "../../../core/components/change-password/change-password.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-login-form',
@@ -17,7 +19,7 @@ export class LoginFormComponent implements OnInit{
   role: string
   email: string
 
-  constructor(private authService: AuthenticationService, private snackBar: SnackBarComponent, private router: Router) {
+  constructor(private authService: AuthenticationService, private snackBar: SnackBarComponent, private router: Router, private dialog: MatDialog) {
   }
   ngOnInit():void {
     this.initForm();
@@ -58,7 +60,13 @@ export class LoginFormComponent implements OnInit{
   openFailedLoginSnackBar(){
     this.snackBar.openSnackBar('Failed login attempt!','');
   }
-  usersEmail(){
-    this.email = this.loginForm.value.email;
+  changePassword() {
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      width: '500px',
+      data: { userDetails: this.loginModel }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
+
 }

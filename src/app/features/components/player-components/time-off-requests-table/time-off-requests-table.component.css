@@ -1,0 +1,50 @@
+.row {
+  display: flex;
+}
+
+.table-wrapper {
+  width: max-content;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table-container {
+  width: max-content;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.users-table-cell {
+  padding: 8px;
+}
+
+.pagination-info {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.page-info {
+  margin: 0 10px;
+}
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+

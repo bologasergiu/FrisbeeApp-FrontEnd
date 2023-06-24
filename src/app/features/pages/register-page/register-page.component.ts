@@ -10,5 +10,6 @@ export class RegisterPageComponent implements OnInit{
   constructor() {
   }
   ngOnInit() {
+    localStorage.clear()
   }
 }

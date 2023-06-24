@@ -12,7 +12,6 @@ export class ConfirmationDialogComponent implements OnInit{
     @Optional() @Inject(MAT_DIALOG_DATA) public data: {teamName: String}) { }
 
   ngOnInit(): void {
-    debugger
   }
 
   onAction() {
